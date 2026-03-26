@@ -1,0 +1,787 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* GENERELT */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2ace9;
+  color: #000;
+}
+
+/* HEADER */
+header {
+  background-color: #f2ace9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  height: 80px;
+  position: relative;
+  z-index: 1000;
+}
+
+header a {
+  color: #000;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-size: x-large;
+}
+
+header a:hover {
+  color: #750c95;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo2 {
+  height: 100px;
+  width: auto;
+  display: block;
+}
+
+.topnav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* desktop menu */
+.desktop-nav a:not(:last-child)::after {
+  content: "|";
+  margin-left: 16px;
+  color: #750c95;
+}
+
+/* burger-knap */
+.burger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #000;
+  font-size: x-large;
+  cursor: pointer;
+}
+
+/* separat mobilmenu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  background-color: #f2ace9;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  z-index: 999;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08);
+  padding: 10px 0 15px 0;
+}
+
+.mobile-menu a {
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+  font-size: large;
+  padding: 12px 20px;
+}
+
+.mobile-menu a:hover {
+  color: #750c95;
+}
+
+.mobile-menu.show {
+  display: flex;
+}
+
+/* ENS TYPOGRAFI */
+
+/* store sideoverskrifter */
+.bestil-title,
+.omos-hero h1,
+.tekstboks h1,
+.content h1 {
+  font-size: xx-large;
+  text-align: center;
+}
+
+/* mellemoverskrifter */
+.omos-text h2,
+.kontakt-boks h2,
+.cart h2 {
+  font-size: x-large;
+  margin-bottom: 15px;
+}
+
+/* produktnavne */
+.product h3 {
+  font-size: large;
+}
+
+/* al normal brødtekst */
+.content p,
+.omos-hero p,
+.omos-text p,
+.tekstboks p,
+.product p,
+.opening-list li,
+.today-hours,
+.total,
+.cart li,
+.form-besked,
+.status-box,
+.kontakt-boks label {
+  font-size: large;
+}
+
+/* input og formulartekst */
+.kontakt-boks input,
+.kontakt-boks textarea {
+  font-size: medium;
+}
+
+/* alle knapper */
+.cta-btn,
+.product button,
+.checkout-btn,
+.info-btn,
+.kontakt-boks button {
+  font-size: medium;
+}
+
+/* spacing på overskrifter */
+.bestil-title,
+.omos-hero h1,
+.tekstboks h1 {
+  margin-bottom: 20px;
+}
+
+.content h1 {
+  margin-bottom: 1rem;
+}
+
+/* KNAPPER */
+.cta-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #750c95;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: background-color 0.3s;
+}
+
+.cta-btn:hover {
+  background-color: #f2ace9;
+  color: #000;
+  border: 2px solid #750c95;
+}
+
+/* FORSIDE / HERO SLIDER */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  text-align: center;
+}
+
+.slide.active .content {
+  opacity: 1;
+}
+
+.content p {
+  max-width: 600px;
+  margin: 0 auto 1.5rem auto;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #00000066;
+  z-index: 1;
+}
+
+/* DOTS */
+.dots {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  z-index: 3;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff80;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: #750c95;
+}
+
+/* PREV/NEXT */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #00000080;
+  border: none;
+  color: white;
+  font-size: xx-large;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 3;
+  transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: #000000cc;
+}
+
+.nav-btn.prev {
+  left: 20px;
+}
+
+.nav-btn.next {
+  right: 20px;
+}
+
+/* BESTIL */
+.bestil-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.product {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+}
+
+.product img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.product button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+  background-color: #750c95;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.product button:hover {
+  background-color: #f2ace9;
+  border: 2px solid #750c95;
+  color: #000;
+}
+
+.cart {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+}
+
+.cart ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart li {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.checkout-btn {
+  margin-top: 15px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background-color: #750c95;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.checkout-btn:hover {
+  background-color: #f2ace9;
+  border: 2px solid #750c95;
+  color: #000;
+}
+
+/* OM OS */
+.omos-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px 60px 20px;
+}
+
+.omos-hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.omos-hero p {
+  max-width: 800px;
+  margin: 0 auto 25px auto;
+  line-height: 1.6;
+}
+
+.omos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+}
+
+.omos-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.omos-content {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.omos-text {
+  flex: 1;
+}
+
+.omos-text p {
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.omos-image {
+  flex: 1;
+}
+
+.omos-image img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.omos-card:nth-child(even) .omos-content {
+  flex-direction: row-reverse;
+}
+
+.opening-list {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.opening-list li {
+  margin-bottom: 8px;
+}
+
+.today-hours {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.status-box {
+  margin: 15px 0;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.status-box.open {
+  background-color: #d7ffd9;
+  color: #136f2d;
+}
+
+.status-box.closed {
+  background-color: #ffdada;
+  color: #9b1c1c;
+}
+
+.info-btn {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 25px;
+  background-color: #750c95;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.info-btn:hover {
+  background-color: #f2ace9;
+  color: black;
+  border: 2px solid #750c95;
+}
+
+/* KONTAKT */
+.page-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  padding: 20px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.tekstboks,
+.kontakt-boks {
+  flex: 1;
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.tekstboks {
+  padding: 30px;
+  line-height: 1.5;
+  text-align: left;
+  color: #000;
+  background: none;
+}
+
+.kontakt-boks {
+  padding: 25px;
+}
+
+.slikkepinde {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 20px; /* brug margin i stedet */
+}
+
+.kontakt-boks h2,
+.tekstboks h4 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.kontakt-boks label {
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: bold;
+  color: #000;
+}
+
+.kontakt-boks input,
+.kontakt-boks textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.kontakt-boks textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.kontakt-boks button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #750c95;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.kontakt-boks button:hover {
+  background: #f2ace9;
+  border: 2px solid #750c95;
+  color: #000;
+}
+
+.form-besked {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.form-besked.success {
+  background-color: #d7ffd9;
+  color: #136f2d;
+}
+
+.form-besked.error {
+  background-color: #ffdada;
+  color: #9b1c1c;
+}
+
+.hide {
+  display: none;
+}
+/* FOOTER */
+.footer {
+  background-color: #750c95;
+  color: #fff;
+  margin-top: 40px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-section {
+  flex: 1;
+}
+
+.footer-section h3 {
+  font-size: large;
+  margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section a {
+  font-size: medium;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.footer-section a:hover {
+  color: #f2ace9;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 15px;
+  background-color: #5a0872;
+  font-size: small;
+}
+/* TABLET */
+@media screen and (max-width: 900px) {
+  .bestil-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .topnav a {
+    font-size: large;
+  }
+
+  .product-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product {
+    height: auto;
+    border-radius: 16px;
+  }
+
+  .product button {
+    margin-bottom: 0;
+  }
+
+  .omos-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .omos-card:nth-child(even) .omos-content {
+    flex-direction: column;
+  }
+
+  .omos-image img {
+    height: 220px;
+  }
+}
+
+/* MOBIL */
+@media screen and (max-width: 600px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .burger-btn {
+    display: block;
+  }
+
+  .logo2 {
+    height: 70px;
+  }
+
+  header {
+    padding: 5px 12px;
+    height: 80px;
+  }
+
+  .mobile-menu {
+    top: 80px;
+  }
+
+  .content h1,
+  .bestil-title,
+  .omos-hero h1,
+  .tekstboks h1 {
+    font-size: x-large;
+  }
+
+  .content p,
+  .omos-hero p,
+  .omos-text p,
+  .tekstboks p,
+  .product p,
+  .opening-list li,
+  .today-hours,
+  .form-besked,
+  .status-box,
+  .cart li,
+  .total {
+    font-size: medium;
+  }
+
+  .omos-text h2,
+  .kontakt-boks h2,
+  .cart h2,
+  .product h3 {
+    font-size: large;
+  }
+
+  .nav-btn {
+    font-size: x-large;
+    padding: 8px 12px;
+  }
+
+  .product-list {
+    grid-template-columns: 1fr;
+  }
+
+  .product {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  .product img {
+    height: 200px;
+  }
+
+  .omos-wrapper {
+    padding: 20px 15px 40px 15px;
+  }
+
+  .omos-card {
+    padding: 20px;
+  }
+
+  .omos-image img {
+    height: 180px;
+  }
+
+  .cta-btn,
+  .info-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
